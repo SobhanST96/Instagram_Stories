@@ -78,7 +78,7 @@ final class IGStoryPreviewCell: UICollectionViewCell, UIScrollViewDelegate {
                 case .forward:
                     if snapIndex < story?.snapsCount ?? 0 {
                         if let snap = story?.snaps[snapIndex] {
-                            if snap.kind != MimeType.video {
+                            if snap.kind != MediaType.video {
                                 if let snapView = getSnapview() {
                                     startRequest(snapView: snapView, with: snap.url)
                                 } else {
@@ -93,13 +93,13 @@ final class IGStoryPreviewCell: UICollectionViewCell, UIScrollViewDelegate {
                                     startPlayer(videoView: videoView, with: snap.url)
                                 }
                             }
-                            storyHeaderView.lastUpdatedLabel.text = snap.lastUpdated
+//                            storyHeaderView.lastUpdatedLabel.text = snap.lastUpdated
                         }
                 }
                 case .backward:
                     if snapIndex < story?.snapsCount ?? 0 {
                         if let snap = story?.snaps[snapIndex] {
-                            if snap.kind != MimeType.video {
+                            if snap.kind != MediaType.video {
                                 if let snapView = getSnapview() {
                                     self.startRequest(snapView: snapView, with: snap.url)
                                 }
@@ -112,7 +112,7 @@ final class IGStoryPreviewCell: UICollectionViewCell, UIScrollViewDelegate {
                                     self.startPlayer(videoView: videoView, with: snap.url)
                                 }
                             }
-                            storyHeaderView.lastUpdatedLabel.text = snap.lastUpdated
+//                            storyHeaderView.lastUpdatedLabel.text = snap.lastUpdated
                         }
                 }
             }
@@ -121,7 +121,7 @@ final class IGStoryPreviewCell: UICollectionViewCell, UIScrollViewDelegate {
     public var story: IGStory? {
         didSet {
             storyHeaderView.story = story
-            if let picture = story?.user.picture {
+            if let picture = story?.thumbnailUrl {
                 storyHeaderView.snaperImageView.setImage(url: picture)
             }
         }
@@ -462,10 +462,10 @@ final class IGStoryPreviewCell: UICollectionViewCell, UIScrollViewDelegate {
             }
         }
     }
-    private func gearupTheProgressors(type: MimeType, playerView: IGPlayerView? = nil) {
+    private func gearupTheProgressors(type: MediaType, playerView: IGPlayerView? = nil) {
         if let holderView = getProgressIndicatorView(with: snapIndex),
             let progressView = getProgressView(with: snapIndex){
-            progressView.story_identifier = self.story?.internalIdentifier
+            progressView.story_identifier = self.story?.id
             progressView.snapIndex = snapIndex
             DispatchQueue.main.async {
                 if type == .image {
@@ -685,7 +685,7 @@ extension IGStoryPreviewCell: IGPlayerObserver {
             if videoView.error == nil && (story?.isCompletelyVisible)! == true {
                 if let holderView = getProgressIndicatorView(with: snapIndex),
                     let progressView = getProgressView(with: snapIndex) {
-                    progressView.story_identifier = self.story?.internalIdentifier
+                    progressView.story_identifier = self.story?.id
                     progressView.snapIndex = snapIndex
                     if let duration = videoView.currentItem?.asset.duration {
                         if Float(duration.value) > 0 {

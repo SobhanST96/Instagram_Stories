@@ -13,8 +13,8 @@ final class IGStoryListCell: UICollectionViewCell {
     //MARK: - Public iVars
     public var story: IGStory? {
         didSet {
-            self.profileNameLabel.text = story?.user.name
-            if let picture = story?.user.picture {
+            self.profileNameLabel.text = story?.title
+            if let picture = story?.thumbnailUrl {
                 self.profileImageView.imageView.setImage(url: picture)
             }
         }

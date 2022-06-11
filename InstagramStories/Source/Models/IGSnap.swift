@@ -7,39 +7,43 @@
 
 import Foundation
 
-public enum MimeType: String {
+enum MediaType: String {
     case image
     case video
     case unknown
 }
-public class IGSnap: Codable {
-    public let internalIdentifier: String
-    public let mimeType: String
-    public let lastUpdated: String
-    public let url: String
-    // Store the deleted snaps id in NSUserDefaults, so that when app get relaunch deleted snaps will not display.
-    public var isDeleted: Bool {
+
+struct IGSnap: Codable {
+    let id: String
+    let mediaType: String
+    let url: String
+    let isViewed: Bool
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case mediaType
+        case url
+        case isViewed
+    }
+    
+    public var kind: MediaType {
+        switch mediaType {
+            case MediaType.image.rawValue:
+                return MediaType.image
+            case MediaType.video.rawValue:
+                return MediaType.video
+            default:
+                return MediaType.unknown
+        }
+    }
+    
+    var isDeleted: Bool {
         set{
-            UserDefaults.standard.set(newValue, forKey: internalIdentifier)
+            UserDefaults.standard.set(newValue, forKey: id)
         }
         get{
-            return UserDefaults.standard.value(forKey: internalIdentifier) != nil
+            return UserDefaults.standard.value(forKey: id) != nil
         }
     }
-    public var kind: MimeType {
-        switch mimeType {
-            case MimeType.image.rawValue:
-                return MimeType.image
-            case MimeType.video.rawValue:
-                return MimeType.video
-            default:
-                return MimeType.unknown
-        }
-    }
-    enum CodingKeys: String, CodingKey {
-        case internalIdentifier = "id"
-        case mimeType = "mime_type"
-        case lastUpdated = "last_updated"
-        case url = "url"
-    }
+    
 }
