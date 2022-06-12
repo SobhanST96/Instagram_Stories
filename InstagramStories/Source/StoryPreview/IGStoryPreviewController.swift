@@ -90,9 +90,9 @@ final class IGStoryPreviewController: UIViewController, UIGestureRecognizerDeleg
         super.viewWillAppear(animated)
         // AppUtility.lockOrientation(.portrait)
         // Or to rotate and lock
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            IGAppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
-        }
+//        if UIDevice.current.userInterfaceIdiom == .phone {
+//            IGAppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+//        }
         if !executeOnce {
             DispatchQueue.main.async {
                 self._view.snapsCollectionView.delegate = self
@@ -106,10 +106,10 @@ final class IGStoryPreviewController: UIViewController, UIGestureRecognizerDeleg
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if UIDevice.current.userInterfaceIdiom == .phone {
+//        if UIDevice.current.userInterfaceIdiom == .phone {
             // Don't forget to reset when view is being removed
-            IGAppUtility.lockOrientation(.all)
-        }
+//            IGAppUtility.lockOrientation(.all)
+//        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

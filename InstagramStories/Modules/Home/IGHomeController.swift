@@ -14,19 +14,25 @@ internal var isDeleteSnapEnabled = true
 final class IGHomeController: UIViewController {
     
     //MARK: - iVars
-    private var _view: IGHomeView{return view as! IGHomeView}
+//    private var _view: IGHomeView{return view as! IGHomeView}
     private var viewModel: IGHomeViewModel = IGHomeViewModel()
     
     //MARK: - Overridden functions
     override func loadView() {
         super.loadView()
-        view = IGHomeView(frame: UIScreen.main.bounds)
-        _view.collectionView.delegate = self
-        _view.collectionView.dataSource = self
+        DispatchQueue.main.async {
+            if let stories = self.viewModel.getStories(), let stories_copy = try? stories.copy().stories {
+                let storyPreviewScene = IGStoryPreviewController.init(stories: stories_copy, handPickedStoryIndex:  0, handPickedSnapIndex: 0)
+                self.present(storyPreviewScene, animated: true, completion: nil)
+            }
+        }
+//        view = IGHomeView(frame: UIScreen.main.bounds)
+//        _view.collectionView.delegate = self
+//        _view.collectionView.dataSource = self
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        automaticallyAdjustsScrollViewInsets = false
+//        automaticallyAdjustsScrollViewInsets = false
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -68,16 +74,10 @@ UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == 0 {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IGAddStoryCell.reuseIdentifier, for: indexPath) as? IGAddStoryCell else { fatalError() }
-            cell.userDetails = ("Your story","https://avatars2.githubusercontent.com/u/32802714?s=200&v=4")
-            return cell
-        }else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IGStoryListCell.reuseIdentifier,for: indexPath) as? IGStoryListCell else { fatalError() }
             let story = viewModel.cellForItemAt(indexPath: indexPath)
             cell.story = story
             return cell
-        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

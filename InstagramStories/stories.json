@@ -9,13 +9,31 @@
                 {
                     "_id": "629dbcea0b120bff65d95c5c",
                     "mediaType": "image",
-                    "url": "https://pics.com/t.png",
+                    "url": "https://images.bluethumb.com.au/uploads/listing/285921/nadia-culph-magnolia-grandiflora-bluethumb-e8d1.jpg?w=295&max-h=852&dpi=2&fit=crop&auto=compress&cs=tinysrgb&q=70&s=1e3196ed87e2b01746f28024a30ebee2",
                     "createdAt": "2022-06-06T08:38:02.499Z",
                     "updatedAt": "2022-06-06T08:38:02.499Z",
                     "isViewed": false
                 }
             ],
-            "thumbnailUrl": "https://somepic.com/test.jpg",
+            "thumbnailUrl": "https://randomuser.me/api/portraits/med/women/1.jpg",
+            "title": "Hi"
+        },
+        {
+            "_id": "629dbcea0b120bff64d95c3b",
+            "expiresAt": "2024-01-01T00:00:00.000Z",
+            "createdAt": "2022-06-06T08:38:02.499Z",
+            "updatedAt": "2022-06-06T08:38:02.499Z",
+            "snaps": [
+                {
+                    "_id": "629dbcea0b120bff65d95f5c",
+                    "mediaType": "image",
+                    "url": "https://images.bluethumb.com.au/uploads/listing/285921/nadia-culph-magnolia-grandiflora-bluethumb-e8d1.jpg?w=295&max-h=852&dpi=2&fit=crop&auto=compress&cs=tinysrgb&q=70&s=1e3196ed87e2b01746f28024a30ebee2",
+                    "createdAt": "2022-06-06T08:38:02.499Z",
+                    "updatedAt": "2022-06-06T08:38:02.499Z",
+                    "isViewed": false
+                }
+            ],
+            "thumbnailUrl": "https://randomuser.me/api/portraits/med/women/1.jpg",
             "title": "Hi"
         }
     ]

@@ -30,7 +30,7 @@ extension IGImageRequestable where Self: UIImageView {
             guard let completion = completionBlock else { return }
             return completion(.success(cachedImage))
         }else {
-            IGURLSession.default.downloadImage(using: urlString) { [weak self] (response) in
+            IGURLSession().downloadImage(using: urlString) { [weak self] (response) in
                 guard let strongSelf = self else { return }
                 strongSelf.hideActivityIndicator()
                 switch response {

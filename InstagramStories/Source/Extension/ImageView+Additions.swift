@@ -17,10 +17,10 @@ extension UIImageView: IGImageRequestable {
         layer.masksToBounds = false
         if style == .rounded {
             layer.cornerRadius = frame.height/2
-            activityStyle = .white
+            activityStyle = .medium
         } else if style == .squared {
             layer.cornerRadius = 0
-            activityStyle = .whiteLarge
+            activityStyle = .large
         }
         
         clipsToBounds = true

@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-class IGURLSession: URLSession {
-    static let `default` = IGURLSession()
+class IGURLSession {
+    
     private(set) var dataTasks: [URLSessionDataTask] = []
 }
 extension IGURLSession {
@@ -26,7 +26,7 @@ extension IGURLSession {
         guard let url = URL(string: urlString) else {
             return completionBlock(.failure(IGError.invalidImageURL))
         }
-        dataTasks.append(IGURLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+        dataTasks.append(URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             if let result = data, error == nil, let imageToCache = UIImage(data: result) {
                 IGCache.shared.setObject(imageToCache, forKey: url.absoluteString as AnyObject)
                 completionBlock(.success(imageToCache))
