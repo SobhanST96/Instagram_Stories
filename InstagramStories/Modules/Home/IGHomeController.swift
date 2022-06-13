@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EVStories
 
 fileprivate let isClearCacheEnabled = true
 internal var isDeleteSnapEnabled = true
@@ -74,7 +75,7 @@ UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IGStoryListCell.reuseIdentifier,for: indexPath) as? IGStoryListCell else { fatalError() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IGStoryListCell.reuseIdentifier, for: indexPath) as? IGStoryListCell else { fatalError() }
             let story = viewModel.cellForItemAt(indexPath: indexPath)
             cell.story = story
             return cell

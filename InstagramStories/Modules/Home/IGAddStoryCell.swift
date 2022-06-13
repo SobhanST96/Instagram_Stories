@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EVStories
 
 final class IGAddStoryCell: UICollectionViewCell {
     

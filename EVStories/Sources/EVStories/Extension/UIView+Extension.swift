@@ -11,49 +11,49 @@ import UIKit
 
 extension UIView {
     
-    var igLeftAnchor: NSLayoutXAxisAnchor {
+    public var igLeftAnchor: NSLayoutXAxisAnchor {
         if #available(iOS 11.0, *) {
             return self.safeAreaLayoutGuide.leftAnchor
         }
         return self.leftAnchor
     }
-    var igRightAnchor: NSLayoutXAxisAnchor {
+    public var igRightAnchor: NSLayoutXAxisAnchor {
         if #available(iOS 11.0, *) {
             return self.safeAreaLayoutGuide.rightAnchor
         }
         return self.rightAnchor
     }
-    var igTopAnchor: NSLayoutYAxisAnchor {
+    public var igTopAnchor: NSLayoutYAxisAnchor {
         if #available(iOS 11.0, *) {
             return self.safeAreaLayoutGuide.topAnchor
         }
         return self.topAnchor
     }
-    var igBottomAnchor: NSLayoutYAxisAnchor {
+    public var igBottomAnchor: NSLayoutYAxisAnchor {
         if #available(iOS 11.0, *) {
             return self.safeAreaLayoutGuide.bottomAnchor
         }
         return self.bottomAnchor
     }
-    var igCenterXAnchor: NSLayoutXAxisAnchor {
+    public var igCenterXAnchor: NSLayoutXAxisAnchor {
         if #available(iOS 11.0, *) {
             return self.safeAreaLayoutGuide.centerXAnchor
         }
         return self.centerXAnchor
     }
-    var igCenterYAnchor: NSLayoutYAxisAnchor {
+    public var igCenterYAnchor: NSLayoutYAxisAnchor {
         if #available(iOS 11.0, *) {
             return self.safeAreaLayoutGuide.centerYAnchor
         }
         return self.centerYAnchor
     }
-    var width: CGFloat {
+    public var width: CGFloat {
         if #available(iOS 11.0, *) {
             return safeAreaLayoutGuide.layoutFrame.width
         }
         return frame.width
     }
-    var height: CGFloat {
+    public var height: CGFloat {
         if #available(iOS 11.0, *) {
             return safeAreaLayoutGuide.layoutFrame.height
         }

@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct IGStories: Codable {
-    let stories: [IGStory]
+public struct IGStories: Codable {
+    public let stories: [IGStory]
     
-    func copy() throws -> IGStories {
+    public func copy() throws -> IGStories {
         let data = try JSONEncoder().encode(self)
         let copy = try JSONDecoder().decode(IGStories.self, from: data)
         return copy
@@ -19,7 +19,7 @@ struct IGStories: Codable {
 }
 
 extension IGStories {
-    func removeCachedFile(for urlString: String) {
+    public func removeCachedFile(for urlString: String) {
         IGVideoCacheManager.shared.getFile(for: urlString) { (result) in
             switch result {
             case .success(let url):
@@ -29,7 +29,7 @@ extension IGStories {
             }
         }
     }
-    static func removeAllVideoFilesFromCache() {
+    public static func removeAllVideoFilesFromCache() {
         IGVideoCacheManager.shared.clearCache()
     }
 }

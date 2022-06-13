@@ -13,7 +13,7 @@ enum MediaType: String {
     case unknown
 }
 
-struct IGSnap: Codable {
+public struct IGSnap: Codable {
     let id: String
     let mediaType: String
     let url: String
@@ -26,7 +26,7 @@ struct IGSnap: Codable {
         case isViewed
     }
     
-    public var kind: MediaType {
+    var kind: MediaType {
         switch mediaType {
             case MediaType.image.rawValue:
                 return MediaType.image

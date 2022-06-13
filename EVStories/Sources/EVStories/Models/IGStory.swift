@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct IGStory: Codable {
+public struct IGStory: Codable {
     // Note: To retain lastPlayedSnapIndex value for each story making this type as class
     public var snapsCount: Int {
         return snaps.count
@@ -18,18 +18,18 @@ struct IGStory: Codable {
 //        return _snaps.filter{!($0.isDeleted)}
 //    }
     
-    let id: String
-    let expiresAt: String
-    let createdAt: String
-    let updatedAt: String
+    public let id: String
+    public let expiresAt: String
+    public let createdAt: String
+    public let updatedAt: String
     // To hold the json snaps.
-    var snaps: [IGSnap]
-    let thumbnailUrl: String
-    let title: String
+    public var snaps: [IGSnap]
+    public let thumbnailUrl: String
+    public let title: String
     
-    var lastPlayedSnapIndex = 0
-    var isCompletelyVisible = false
-    var isCancelledAbruptly = false
+    public var lastPlayedSnapIndex = 0
+    public var isCompletelyVisible = false
+    public var isCancelledAbruptly = false
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"

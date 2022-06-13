@@ -10,16 +10,16 @@ import Foundation
 import UIKit
 
 //@note:Recommended Size: CGSize(width:70,height:70)
-struct Attributes {
+public struct Attributes {
     let borderWidth:CGFloat = 2.0
     let borderColor = UIColor.white
     let backgroundColor = IGTheme.redOrange
     let size = CGSize(width:68,height:68)
 }
 
-class IGRoundedView: UIView {
+public class IGRoundedView: UIView {
     private var attributes:Attributes = Attributes()
-    lazy var imageView: UIImageView = {
+    public lazy var imageView: UIImageView = {
         let iv = UIImageView()
         iv.layer.borderWidth = (attributes.borderWidth)
         iv.layer.borderColor = attributes.borderColor.cgColor
@@ -40,7 +40,7 @@ class IGRoundedView: UIView {
         backgroundColor = attributes.backgroundColor
         addSubview(imageView)
     }
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = frame.height/2
         imageView.frame = CGRect(x:1,y:1,width:(attributes.size.width)-2,height:attributes.size.height-2)
@@ -49,7 +49,7 @@ class IGRoundedView: UIView {
 }
 
 extension IGRoundedView {
-    func enableBorder(enabled: Bool = true) {
+    public func enableBorder(enabled: Bool = true) {
         if enabled {
             layer.borderColor = UIColor.clear.cgColor
             layer.borderWidth = 0
